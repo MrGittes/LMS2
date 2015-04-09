@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ScrumpingLMS.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace ScrumpingLMS.Controllers
 {
@@ -54,6 +55,12 @@ namespace ScrumpingLMS.Controllers
 
             if (ModelState.IsValid)
             {
+
+                if (scheduleDay.Details.Contains("script"))
+                {
+                    scheduleDay.Details = scheduleDay.Details.Replace("script", "scripting is not allowed");
+                }
+
                 db.ScheduleDays.Add(scheduleDay);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -88,6 +95,12 @@ namespace ScrumpingLMS.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                if (scheduleDay.Details.Contains("script"))
+                {
+                    scheduleDay.Details = scheduleDay.Details.Replace("script", "scripting is not allowed");
+                }
+                
                 db.Entry(scheduleDay).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
