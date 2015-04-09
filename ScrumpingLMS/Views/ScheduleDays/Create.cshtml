@@ -26,7 +26,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Details, 10, 400, new { htmlAttributes = new { @class = "form-control" } })
+                <p id="schemahelper">
+                    Använd följande html-taggar:<br />
+                    &lt;b&gt; <b>Fet text</b> &lt;/b&gt;<br />
+                    &lt;&gt; <i>Kursiv text</i> &lt;/i&gt;<br />
+                    &lt;u&gt; <u>Understruken text</u> &lt;/u&gt;<br />
+                    &lt;a href="http://www.lexicon.se"&gt;<a href="http://www.lexicon.se">Länk till Lexicon</a>&lt;/a&gt;<br />
+
+                </p>
                 @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
             </div>
         </div>
