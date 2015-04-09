@@ -36,7 +36,8 @@
             @Html.DisplayFor(modelItem => item.DayNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Details)
+            @{var text = item.Details;}
+            @Html.Raw(@text)
         </td>
         <td>
 @if (User.IsInRole("admin"))
