@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ScrumpingLMS.Models.ScheduleDay>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kursschema</h2>
+
+<h3>Idag: @DateTime.Now.ToString("yyyy-MM-dd")</h3>
+<p>
+    @if (User.IsInRole("admin"))
+    {
+         @Html.ActionLink("Create New", "Create")
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Klass.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DayNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Klass.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DayNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        <td>
+@if (User.IsInRole("admin"))
+    {
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) } |    
+                                                                                                                                                                                                                                              
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+@if (User.IsInRole("admin"))
+{
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+}
+        </td>
+    </tr>
+}
+
+</table>

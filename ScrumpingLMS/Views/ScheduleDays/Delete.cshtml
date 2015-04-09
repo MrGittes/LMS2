@@ -1,0 +1,48 @@
+﻿@model ScrumpingLMS.Models.ScheduleDay
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ScheduleDay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Klass.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klass.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

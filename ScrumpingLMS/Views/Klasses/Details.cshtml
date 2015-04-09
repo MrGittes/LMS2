@@ -1,0 +1,86 @@
+﻿@model ScrumpingLMS.Models.Klass
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Klassuppgifter</h2>
+
+<div>
+    <h4>Klass</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfDays)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@{
+    var students = (List<ScrumpingLMS.Models.ApplicationUser>)ViewBag.LMSStudents;
+}
+
+    <div class="row">
+        <div class="col-md-2">
+            <b>Förnamn</b>
+        </div>
+        <div class="col-md-2">
+            <b>Efternamn</b>
+        </div>
+        <div class="col-md-2">
+            <b>E-post</b>
+        </div>
+    </div>
+
+    @foreach (var student in students)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => student.FirstName)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => student.LastName)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => student.Email)
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("Edit", "Edit", new { id = student.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = student.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = student.Id })
+            </div>
+        </div>
+    }
