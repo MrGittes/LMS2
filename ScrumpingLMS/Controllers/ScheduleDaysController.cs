@@ -18,6 +18,8 @@ namespace ScrumpingLMS.Controllers
         // GET: ScheduleDays
         public ActionResult Index()
         {
+            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name");
+
             var scheduleDays = db.ScheduleDays.Include(s => s.Klass);
             return View(scheduleDays.ToList());
         }
