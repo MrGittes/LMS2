@@ -31,7 +31,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Details)
+            @{var text = Model.Details;}
+            @Html.Raw(@text)
         </dd>
 
     </dl>
