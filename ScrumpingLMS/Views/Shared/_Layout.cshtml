@@ -44,13 +44,13 @@
                         <li>@Html.ActionLink("Klass", "IndexKlass", "Klasses")</li>
                     }
 
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Om", "About", "Home")</li>
+                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
 
                     @if (User.IsInRole("admin"))
                     {
                         <li>@Html.ActionLink("Klasser", "Index", "Klasses")</li>
-                        <li>@Html.ActionLink("Add new user", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Registrera användare", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                     }
                     
 
@@ -63,7 +63,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Åsens Pallade Kjellkod</p>
         </footer>
     </div>
 
