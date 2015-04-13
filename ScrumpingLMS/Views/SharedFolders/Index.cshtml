@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ScrumpingLMS.Models.Dokument>
+﻿@model IEnumerable<ScrumpingLMS.Models.SharedFolder>
 
 @{
     ViewBag.Title = "Index";
@@ -15,7 +15,10 @@
             @Html.DisplayNameFor(model => model.ApplicationUser.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DokumentObjekt)
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LinkToDokument)
         </th>
         <th></th>
     </tr>
@@ -26,7 +29,10 @@
             @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DokumentObjekt)
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LinkToDokument)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
@@ -37,9 +43,3 @@
 }
 
 </table>
-
-@using (Html.BeginForm("Upload", "Dokuments", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <input type="file" name="file" />
-    <input type="submit" name="Submit" id="Submit" value="Upload" />
-}

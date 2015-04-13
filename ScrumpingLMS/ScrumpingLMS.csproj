@@ -164,6 +164,7 @@
     <Compile Include="Controllers\KlassesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ScheduleDaysController.cs" />
+    <Compile Include="Controllers\SharedFoldersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +203,10 @@
     <Compile Include="Migrations\201504071325302_KlassId.cs" />
     <Compile Include="Migrations\201504071325302_KlassId.Designer.cs">
       <DependentUpon>201504071325302_KlassId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504100802413_UserInSharedFolder.cs" />
+    <Compile Include="Migrations\201504100802413_UserInSharedFolder.Designer.cs">
+      <DependentUpon>201504100802413_UserInSharedFolder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -282,6 +287,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lms.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
@@ -343,6 +349,12 @@
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
     <Content Include="Views\Klasses\IndexKlass.cshtml" />
+    <Content Include="Views\SharedFolders\Create.cshtml" />
+    <Content Include="Views\SharedFolders\Delete.cshtml" />
+    <Content Include="Views\SharedFolders\Details.cshtml" />
+    <Content Include="Views\SharedFolders\Edit.cshtml" />
+    <Content Include="Views\SharedFolders\Index.cshtml" />
+    <Content Include="Views\ScheduleDays\_ScheduleList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -380,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504071325302_KlassId.resx">
       <DependentUpon>201504071325302_KlassId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504100802413_UserInSharedFolder.resx">
+      <DependentUpon>201504100802413_UserInSharedFolder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -28,10 +28,12 @@ namespace ScrumpingLMS.Controllers
         {
             var TempId = User.Identity.GetUserId();
 
-
             var _user = db.Users.Where(u => u.Id == TempId).First();         
             var Deltagare = db.Users
                 .Where(i => i.KlassId == _user.KlassId).ToList();
+
+            Klass klass = db.Klasser.Find(_user.KlassId);
+            ViewBag.KlassNamn = klass.Name;
 
             return View(Deltagare);
         }

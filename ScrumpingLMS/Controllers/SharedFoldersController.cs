@@ -7,134 +7,115 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ScrumpingLMS.Models;
-using System.ComponentModel.DataAnnotations;
 
 namespace ScrumpingLMS.Controllers
 {
-    public class ScheduleDaysController : Controller
+    public class SharedFoldersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ScheduleDays
+        // GET: SharedFolders
         public ActionResult Index()
         {
-            List<ScheduleDay> days = new List<ScheduleDay>();
-
-            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name");
-
-//            var scheduleDays = db.ScheduleDays.Include(s => s.Klass);
-//            return View(scheduleDays.ToList());
-
-            return View(days);
+            var sharedFolders = db.SharedFolders.Include(s => s.ApplicationUser);
+            return View(sharedFolders.ToList());
         }
 
-        // GET: ScheduleDays/Details/5
+        // GET: SharedFolders/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduleDay scheduleDay = db.ScheduleDays.Find(id);
-            if (scheduleDay == null)
+            SharedFolder sharedFolder = db.SharedFolders.Find(id);
+            if (sharedFolder == null)
             {
                 return HttpNotFound();
             }
-            return View(scheduleDay);
+            return View(sharedFolder);
         }
 
-        // GET: ScheduleDays/Create
+        // GET: SharedFolders/Create
         public ActionResult Create()
         {
-            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name");
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
-        // POST: ScheduleDays/Create
+        // POST: SharedFolders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,DayNumber,KlassId,Details")] ScheduleDay scheduleDay)
+        public ActionResult Create([Bind(Include = "Id,Name,ApplicationUserId,LinkToDokument")] SharedFolder sharedFolder)
         {
             if (ModelState.IsValid)
             {
-
-                if (scheduleDay.Details.Contains("script"))
-                {
-                    scheduleDay.Details = scheduleDay.Details.Replace("script", "scripting is not allowed");
-                }
-
-                db.ScheduleDays.Add(scheduleDay);
+                db.SharedFolders.Add(sharedFolder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name", scheduleDay.KlassId);
-            return View(scheduleDay);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", sharedFolder.ApplicationUserId);
+            return View(sharedFolder);
         }
 
-        // GET: ScheduleDays/Edit/5
+        // GET: SharedFolders/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduleDay scheduleDay = db.ScheduleDays.Find(id);
-            if (scheduleDay == null)
+            SharedFolder sharedFolder = db.SharedFolders.Find(id);
+            if (sharedFolder == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name", scheduleDay.KlassId);
-            return View(scheduleDay);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", sharedFolder.ApplicationUserId);
+            return View(sharedFolder);
         }
 
-        // POST: ScheduleDays/Edit/5
+        // POST: SharedFolders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,DayNumber,KlassId,Details")] ScheduleDay scheduleDay)
+        public ActionResult Edit([Bind(Include = "Id,Name,ApplicationUserId,LinkToDokument")] SharedFolder sharedFolder)
         {
             if (ModelState.IsValid)
             {
-
-                if (scheduleDay.Details.Contains("script"))
-                {
-                    scheduleDay.Details = scheduleDay.Details.Replace("script", "scripting is not allowed");
-                }
-                
-                db.Entry(scheduleDay).State = EntityState.Modified;
+                db.Entry(sharedFolder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name", scheduleDay.KlassId);
-            return View(scheduleDay);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", sharedFolder.ApplicationUserId);
+            return View(sharedFolder);
         }
 
-        // GET: ScheduleDays/Delete/5
+        // GET: SharedFolders/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduleDay scheduleDay = db.ScheduleDays.Find(id);
-            if (scheduleDay == null)
+            SharedFolder sharedFolder = db.SharedFolders.Find(id);
+            if (sharedFolder == null)
             {
                 return HttpNotFound();
             }
-            return View(scheduleDay);
+            return View(sharedFolder);
         }
 
-        // POST: ScheduleDays/Delete/5
+        // POST: SharedFolders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ScheduleDay scheduleDay = db.ScheduleDays.Find(id);
-            db.ScheduleDays.Remove(scheduleDay);
+            SharedFolder sharedFolder = db.SharedFolders.Find(id);
+            db.SharedFolders.Remove(sharedFolder);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ScrumpingLMS.Models;
+using System.IO;
 
 namespace ScrumpingLMS.Controllers
 {
@@ -19,6 +20,19 @@ namespace ScrumpingLMS.Controllers
         {
             var dokuments = db.Dokuments.Include(d => d.ApplicationUser);
             return View(dokuments.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/Documents/"), fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("Index");
         }
 
         // GET: Dokuments/Details/5

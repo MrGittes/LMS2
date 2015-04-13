@@ -78,11 +78,11 @@ namespace ScrumpingLMS.Models
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "FirstName")]
+        [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "LastName")]
+        [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
         //Anger aktuell dag i kursen
