@@ -1,4 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Home Page";
 }
+
+<h1>Välkommen @User.Identity.GetUserName()</h1><br />
+
+Använd menyerna ovan för att navigera till önskad funktion.
 
