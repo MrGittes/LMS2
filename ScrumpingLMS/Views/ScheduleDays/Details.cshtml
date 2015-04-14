@@ -7,11 +7,11 @@
 <h2>Detaljer för schema</h2>
 
 <div>
-    <h4>ScheduleDay</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Klass.Name)
+            <!--@Html.DisplayNameFor(model => model.Klass.Name)-->
+            Klass
         </dt>
 
         <dd>
@@ -19,7 +19,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DayNumber)
+            <!--@Html.DisplayNameFor(model => model.DayNumber)-->
+            Dag
         </dt>
 
         <dd>
@@ -27,7 +28,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Details)
+            <!--@Html.DisplayNameFor(model => model.Details)-->
+            Detaljer
         </dt>
 
         <dd>
@@ -40,7 +42,7 @@
 <p>
     @if (User.IsInRole("admin"))
     {
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
+    @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }) 
     }
-     @Html.ActionLink("Back to List", "Index")
+     @Html.ActionLink("Tillbaka till listan", "Index")
 </p>
