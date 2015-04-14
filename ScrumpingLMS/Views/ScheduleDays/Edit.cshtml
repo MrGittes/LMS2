@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Ändra Schema</h2>
 
 
 @using (Html.BeginForm())
@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DayNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DayNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DisplayFor(model => model.DayNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DayNumber, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.KlassId, "KlassId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("KlassId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DisplayFor(model => model.Klass.Name, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.KlassId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -40,6 +40,7 @@
                
                 <p id="schemahelper">
                     Använd följande html-taggar:<br />
+                    &lt;br&gt; för att göra radbrytning<br />
                     &lt;b&gt; <b>Fet text</b> &lt;/b&gt;<br />
                     &lt;&gt; <i>Kursiv text</i> &lt;/i&gt;<br />
                     &lt;u&gt; <u>Understruken text</u> &lt;/u&gt;<br />
