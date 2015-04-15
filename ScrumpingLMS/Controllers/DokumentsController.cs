@@ -11,6 +11,7 @@ using System.IO;
 
 namespace ScrumpingLMS.Controllers
 {
+    [Authorize]
     public class DokumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

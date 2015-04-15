@@ -37,7 +37,7 @@
     </dl>
 </div>
 <p>
-    @if (User.IsInRole("admin")) {
+    @if (User.IsInRole("lärare")) {
        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
     }
     @Html.ActionLink("Tillbaka till schemaöversikt", "Index")

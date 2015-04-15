@@ -30,8 +30,8 @@ namespace ScrumpingLMS.Migrations
                 var user = new ApplicationUser { UserName = "Kjell" };
                 manager.Create(user, "password");
 
-                roleManager.Create(new IdentityRole { Name = "admin" });
-                manager.AddToRole(user.Id, "admin");
+                roleManager.Create(new IdentityRole { Name = "lärare" });
+                manager.AddToRole(user.Id, "lärare");
             }
 
             if (!context.Users.Any(u => u.UserName == "Sven"))
@@ -40,9 +40,20 @@ namespace ScrumpingLMS.Migrations
                 var user2 = new ApplicationUser { UserName = "Sven" };
                 manager.Create(user2, "password");
 
-                roleManager.Create(new IdentityRole { Name = "admin" });
-                manager.AddToRole(user2.Id, "admin");
+                roleManager.Create(new IdentityRole { Name = "lärare" });
+                manager.AddToRole(user2.Id, "lärare");
             }
+
+            if (!context.Users.Any(u => u.UserName == "Teacher"))
+            {
+
+                var user2 = new ApplicationUser { UserName = "Teacher" };
+                manager.Create(user2, "password");
+
+                roleManager.Create(new IdentityRole { Name = "lärare" });
+                manager.AddToRole(user2.Id, "lärare");
+            }
+
 
             if (!context.Users.Any(u => u.UserName == "Palle"))
             {
@@ -50,26 +61,26 @@ namespace ScrumpingLMS.Migrations
                 var user3 = new ApplicationUser { UserName = "Palle" };
                 manager.Create(user3, "password");
 
-                roleManager.Create(new IdentityRole { Name = "admin" });
-                manager.AddToRole(user3.Id, "admin");
+                roleManager.Create(new IdentityRole { Name = "lärare" });
+                manager.AddToRole(user3.Id, "lärare");
             }
 
-            //if (!context.Users.Any(u => u.UserName == "student"))
-            //{
-            //    var user4 = new ApplicationUser { UserName = "student" };
-            //    manager.Create(user4, "password");
+            if (!context.Users.Any(u => u.UserName == "student2"))
+            {
+                var user4 = new ApplicationUser { UserName = "student" };
+                manager.Create(user4, "password");
 
-            //    roleManager.Create(new IdentityRole { Name = "user" });
-            //    manager.AddToRole(user4.Id, "user");
-            //}
+                roleManager.Create(new IdentityRole { Name = "elev" });
+                manager.AddToRole(user4.Id, "elev");
+            }
 
             if (!context.Users.Any(u => u.UserName == "Eva"))
             {
                 var user4 = new ApplicationUser { UserName = "Eva" };
                 manager.Create(user4, "password");
 
-                roleManager.Create(new IdentityRole { Name = "user" });
-                manager.AddToRole(user4.Id, "user");
+                roleManager.Create(new IdentityRole { Name = "elev" });
+                manager.AddToRole(user4.Id, "elev");
             }
         }
     }

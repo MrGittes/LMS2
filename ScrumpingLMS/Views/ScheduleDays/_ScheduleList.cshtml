@@ -16,13 +16,13 @@
                 @Html.Raw(@text) &nbsp;
             </div>
             <div class="col-md-2">
-                @if (User.IsInRole("admin"))
+                @if (User.IsInRole("lärare"))
                 {
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                 } |
 
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @if (User.IsInRole("admin"))
+                @if (User.IsInRole("lärare"))
                 {
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 }
