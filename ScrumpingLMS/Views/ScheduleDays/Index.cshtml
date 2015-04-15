@@ -4,9 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Kursschema</h2>
+<h2>Kursschema: @if (User.IsInRole("user"))
+{ 
+    @ViewBag.KlassNamn
+}
+</h2> 
 
-<h3>Idag: @DateTime.Now.ToString("yyyy-MM-dd")</h3>
+<h4>Idag: @DateTime.Now.ToString("yyyy-MM-dd")</h4>
+
+<hr />
 
 @if (User.IsInRole("admin")) {
     <div class="form-group">
@@ -16,20 +22,7 @@
             @*@Html.ValidationMessageFor(model => model.KlassId, "", new { @class = "text-danger" })*@
         </div>
     </div>
-}   
-        <div class="col-md-3">
-            @Html.DisplayNameFor(model => model.Klass.Name)
-        </div>
- 
-        <div class="col-md-3">
-              @Html.DisplayNameFor(model => model.DayNumber)
-        </div>
-        <div class="col-md-3">
-              @Html.DisplayNameFor(model => model.Details)
-          </div>
-        <div class="col-md-3">
-            &nbsp;
-        </div>    
+}       
 
 @Html.Partial("_ScheduleList", Model)
 

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ScrumpingLMS.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Identity;
 
 namespace ScrumpingLMS.Controllers
 {
@@ -22,10 +23,33 @@ namespace ScrumpingLMS.Controllers
 
             ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name");
 
-//            var scheduleDays = db.ScheduleDays.Include(s => s.Klass);
-//            return View(scheduleDays.ToList());
+            var tempId = User.Identity.GetUserId();
+            var roleID = db.Users.Where(u => u.Id == tempId).First().Roles.First().RoleId;
+            var adminID = db.Roles.Where(r => r.Name == "admin").First().Id;
 
-            return View(days);
+            if (roleID == adminID)
+            {
+                var scheduleDays = db.ScheduleDays.Include(s => s.Klass);
+                return View(scheduleDays.ToList());
+            }
+            else
+            {
+                var _user = db.Users.Where(u => u.Id == tempId).First();
+
+                Klass klass = db.Klasser.Find(_user.KlassId);
+                ViewBag.KlassNamn = klass.Name;
+
+                var scheduleDays = db.ScheduleDays
+                    .Where(k => k.KlassId == _user.KlassId);
+
+                //    var model = db.Fordons.GroupBy(v => v.TypeOfVehicle)
+                //        .Select(g =>
+                //            new VehicleViewModel { CountOfVehicles = g.Count(),
+                //                                    TypeOfVehicle = g.Key
+                //            });
+
+                return View(scheduleDays.ToList());
+            }
         }
 
         // GET: ScheduleDays/Details/5

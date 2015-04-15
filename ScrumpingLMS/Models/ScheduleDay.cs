@@ -12,6 +12,8 @@ namespace ScrumpingLMS.Models
 
         public int DayNumber { get; set; }
 
+        public DateTime WorkingDate { get; set; }
+
         //Foreign Key KlassId
         public int KlassId { get; set; }
 

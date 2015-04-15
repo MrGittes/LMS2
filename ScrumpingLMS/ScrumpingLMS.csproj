@@ -208,6 +208,14 @@
     <Compile Include="Migrations\201504100802413_UserInSharedFolder.Designer.cs">
       <DependentUpon>201504100802413_UserInSharedFolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504150450083_WorkingDate.cs" />
+    <Compile Include="Migrations\201504150450083_WorkingDate.Designer.cs">
+      <DependentUpon>201504150450083_WorkingDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504150458390_reomveEnddate.cs" />
+    <Compile Include="Migrations\201504150458390_reomveEnddate.Designer.cs">
+      <DependentUpon>201504150458390_reomveEnddate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -395,6 +403,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504100802413_UserInSharedFolder.resx">
       <DependentUpon>201504100802413_UserInSharedFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504150450083_WorkingDate.resx">
+      <DependentUpon>201504150450083_WorkingDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504150458390_reomveEnddate.resx">
+      <DependentUpon>201504150458390_reomveEnddate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
