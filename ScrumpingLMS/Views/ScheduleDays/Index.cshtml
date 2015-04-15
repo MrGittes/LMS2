@@ -8,43 +8,17 @@
 
 <h3>Idag: @DateTime.Now.ToString("yyyy-MM-dd")</h3>
 
-<table class="table">
-    <tr>
-        <th>
-            <!--@Html.DisplayNameFor(model => model.Klass.Name)-->
-            Klass
-        </th>
-        <th>
-            <!--@Html.DisplayNameFor(model => model.DayNumber)-->
-            Dag
-        </th>
-        <th>
-            <!--@Html.DisplayNameFor(model => model.Details)-->
-            Detaljer
-        </th>
-        <th></th>
-    </tr>
+<hr />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Klass.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DayNumber)
-        </td>
-        <td>
-            @{var text = item.Details;}
-            @Html.Raw(@text)
-        </td>
-        <td>
 @if (User.IsInRole("admin"))
-    {
-            @Html.ActionLink("Ändra", "Edit", new { id=item.Id }) } |    
-                                                                                                                                                                                                                                              
-            @Html.ActionLink("Detaljer", "Details", new { id=item.Id }) |
-        </td>
-    </tr>
+{
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.KlassId, "Klass", htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.DropDownList("KlassId", null, htmlAttributes: new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.KlassId, "", new { @class = "text-danger" })*@
+        </div>
+    </div>
 }
 
-</table>
+@Html.Partial("_ScheduleList", Model)
