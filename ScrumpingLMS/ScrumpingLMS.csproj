@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201504071325302_KlassId.Designer.cs">
       <DependentUpon>201504071325302_KlassId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504151349066_updatering 15april.cs" />
+    <Compile Include="Migrations\201504151349066_updatering 15april.Designer.cs">
+      <DependentUpon>201504151349066_updatering 15april.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -381,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504071325302_KlassId.resx">
       <DependentUpon>201504071325302_KlassId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504151349066_updatering 15april.resx">
+      <DependentUpon>201504151349066_updatering 15april.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
