@@ -157,7 +157,7 @@ namespace ScrumpingLMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-//            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name");
+            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name");
 //            ViewBag.LMSRoleId = new SelectList(Roles.GetAllRoles(), "Id", "Role");
 
             if (ModelState.IsValid)
