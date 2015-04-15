@@ -470,12 +470,44 @@ namespace ScrumpingLMS.Controllers
         {
             if (Url.IsLocalUrl(returnUrl))
             {
-                return RedirectToAction("Index", "ScheduleDays");
-//                return Redirect(returnUrl);
+                return RedirectToAction("IndexLoginRoute", "Home");
+//                return RedirectToAction("Index", "ScheduleDays");
+                //                return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "Home");
         }
 
+/*
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+
+                if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                {
+                    return RedirectToAction("Index", "Klasses");
+                }
+
+                User.Identity.GetUserId();
+
+                var tempId = User.Identity.GetUserId();
+
+                var Roles = UserManager.GetRoles(tempId);
+
+                if (Roles.Contains("admin"))
+                {
+                    return RedirectToAction("Index", "Klasses");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "ScheduleDays");
+                }
+
+//                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+*/
         internal class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri)

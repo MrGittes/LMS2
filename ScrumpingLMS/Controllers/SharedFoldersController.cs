@@ -7,130 +7,115 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ScrumpingLMS.Models;
-using System.IO;
 
 namespace ScrumpingLMS.Controllers
 {
-    [Authorize]
-    public class DokumentsController : Controller
+    public class SharedFoldersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Dokuments
+        // GET: SharedFolders
         public ActionResult Index()
         {
-            var dokuments = db.Dokuments.Include(d => d.ApplicationUser);
-            return View(dokuments.ToList());
+            var sharedFolders = db.SharedFolders.Include(s => s.ApplicationUser);
+            return View(sharedFolders.ToList());
         }
 
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase file)
-        {
-            if (file != null && file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/Documents/"), fileName);
-                file.SaveAs(path);
-            }
-
-            return RedirectToAction("Index");
-        }
-
-        // GET: Dokuments/Details/5
+        // GET: SharedFolders/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dokument dokument = db.Dokuments.Find(id);
-            if (dokument == null)
+            SharedFolder sharedFolder = db.SharedFolders.Find(id);
+            if (sharedFolder == null)
             {
                 return HttpNotFound();
             }
-            return View(dokument);
+            return View(sharedFolder);
         }
 
-        // GET: Dokuments/Create
+        // GET: SharedFolders/Create
         public ActionResult Create()
         {
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
-        // POST: Dokuments/Create
+        // POST: SharedFolders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,DokumentObjekt")] Dokument dokument)
+        public ActionResult Create([Bind(Include = "Id,Name,ApplicationUserId,LinkToDokument")] SharedFolder sharedFolder)
         {
             if (ModelState.IsValid)
             {
-                db.Dokuments.Add(dokument);
+                db.SharedFolders.Add(sharedFolder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", dokument.ApplicationUserId);
-            return View(dokument);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", sharedFolder.ApplicationUserId);
+            return View(sharedFolder);
         }
 
-        // GET: Dokuments/Edit/5
+        // GET: SharedFolders/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dokument dokument = db.Dokuments.Find(id);
-            if (dokument == null)
+            SharedFolder sharedFolder = db.SharedFolders.Find(id);
+            if (sharedFolder == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", dokument.ApplicationUserId);
-            return View(dokument);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", sharedFolder.ApplicationUserId);
+            return View(sharedFolder);
         }
 
-        // POST: Dokuments/Edit/5
+        // POST: SharedFolders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,DokumentObjekt")] Dokument dokument)
+        public ActionResult Edit([Bind(Include = "Id,Name,ApplicationUserId,LinkToDokument")] SharedFolder sharedFolder)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dokument).State = EntityState.Modified;
+                db.Entry(sharedFolder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", dokument.ApplicationUserId);
-            return View(dokument);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", sharedFolder.ApplicationUserId);
+            return View(sharedFolder);
         }
 
-        // GET: Dokuments/Delete/5
+        // GET: SharedFolders/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dokument dokument = db.Dokuments.Find(id);
-            if (dokument == null)
+            SharedFolder sharedFolder = db.SharedFolders.Find(id);
+            if (sharedFolder == null)
             {
                 return HttpNotFound();
             }
-            return View(dokument);
+            return View(sharedFolder);
         }
 
-        // POST: Dokuments/Delete/5
+        // POST: SharedFolders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Dokument dokument = db.Dokuments.Find(id);
-            db.Dokuments.Remove(dokument);
+            SharedFolder sharedFolder = db.SharedFolders.Find(id);
+            db.SharedFolders.Remove(sharedFolder);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

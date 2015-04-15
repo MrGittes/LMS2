@@ -28,10 +28,12 @@ namespace ScrumpingLMS.Controllers
         {
             var TempId = User.Identity.GetUserId();
 
-
             var _user = db.Users.Where(u => u.Id == TempId).First();         
             var Deltagare = db.Users
                 .Where(i => i.KlassId == _user.KlassId).ToList();
+
+            Klass klass = db.Klasser.Find(_user.KlassId);
+            ViewBag.KlassNamn = klass.Name;
 
             return View(Deltagare);
         }
@@ -66,7 +68,7 @@ namespace ScrumpingLMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,StartDate,EndDate,NumberOfDays")] Klass klass)
+        public ActionResult Create([Bind(Include = "Id,Name,StartDate,NumberOfDays")] Klass klass)
         {
             if (ModelState.IsValid)
             {
@@ -78,16 +80,43 @@ namespace ScrumpingLMS.Controllers
                 day.KlassId = klass.Id;
                 day.Details = "";
 
-                for (int i = 1; i <= klass.NumberOfDays; i++)
+                List<DateTime> dateList = getWorkingDates(klass.StartDate, klass.NumberOfDays);
+
+                int i = 1;
+                foreach (DateTime date in dateList)
                 {
                     day.DayNumber = i;
+                    day.WorkingDate = date;
                     db.ScheduleDays.Add(day);
                     db.SaveChanges();
+                    i++;
                 }
+
+                //for (int i = 1; i <= klass.NumberOfDays; i++)
+                //{
+
+                //}
                 return RedirectToAction("Index");
             }
 
             return View(klass);
+        }
+
+        public List<DateTime> getWorkingDates(DateTime StartDate,  int maxdays)
+        {
+            var nextWorkingDays = new List<DateTime>();
+            var testDate = StartDate;
+
+            while (nextWorkingDays.Count() < maxdays)
+            {
+                if (testDate.DayOfWeek != DayOfWeek.Saturday &&
+                         testDate.DayOfWeek != DayOfWeek.Sunday)
+                    nextWorkingDays.Add(testDate);
+
+                testDate = testDate.AddDays(1);
+            }
+
+            return nextWorkingDays;
         }
 
         // GET: Klasses/Edit/5

@@ -12,6 +12,7 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
     <script src="~/Scripts/d3/d3.js"></script>
+    <script src="~/Scripts/lms.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -25,13 +26,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img width="173" height="60" src="~/Images/logo-lexicon-small@2x.gif" />
+                <img width="157" height="50" src="~/Images/logo-lexicon-small@2x.gif" />
                 @Html.ActionLink("LMS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (User.IsInRole("admin"))
+                    @if (User.IsInRole("lärare"))
                     {
                         <li>@Html.ActionLink("Schema", "Index", "ScheduleDays")</li>
                         <li>@Html.ActionLink("Dokument", "Index", "Dokuments")</li>
@@ -42,12 +43,13 @@
                         <li>@Html.ActionLink("Schema", "Index", "ScheduleDays")</li>
                         <li>@Html.ActionLink("Dokument", "Index", "Dokuments")</li>
                         <li>@Html.ActionLink("Klass", "IndexKlass", "Klasses")</li>
+                        <li>@Html.ActionLink("Inlämningsuppgifter", "Index", "SharedFolders")</li>
                     }
 
                     <li>@Html.ActionLink("Om", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
 
-                    @if (User.IsInRole("admin"))
+                    @if (User.IsInRole("lärare"))
                     {
                         <li>@Html.ActionLink("Klasser", "Index", "Klasses")</li>
                         <li>@Html.ActionLink("Registrera användare", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
