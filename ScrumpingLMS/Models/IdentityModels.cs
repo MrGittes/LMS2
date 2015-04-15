@@ -44,6 +44,10 @@ namespace ScrumpingLMS.Models
         public DbSet<SharedFolder> SharedFolders { get; set; }
         public DbSet<SharedFolderApplicationUser> SharedFolderApplicationUsers { get; set; }
 
+       // public System.Data.Entity.DbSet<ScrumpingLMS.Models.ApplicationUser> ApplicationUsers { get; set; }
+
+        //public System.Data.Entity.DbSet<ScrumpingLMS.Models.ApplicationUser> ApplicationUsers { get; set; }
+
 //        public System.Data.Entity.DbSet<ScrumpingLMS.Models.ApplicationUser> ApplicationUsers { get; set; }
 
     }

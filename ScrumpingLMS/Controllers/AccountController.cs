@@ -64,6 +64,12 @@ namespace ScrumpingLMS.Controllers
             return View();
         }
 
+        public ActionResult Reciept(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
         //
         // POST: /Account/Login
         [HttpPost]
@@ -180,7 +186,7 @@ namespace ScrumpingLMS.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Register", "Account");
+                    return RedirectToAction("Reciept", "Account");
                 }
                 AddErrors(result);
             }
