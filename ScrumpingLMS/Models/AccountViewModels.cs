@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ScrumpingLMS.Models
@@ -78,11 +79,11 @@ namespace ScrumpingLMS.Models
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "FirstName")]
+        [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "LastName")]
+        [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
         //Anger aktuell dag i kursen
@@ -135,5 +136,17 @@ namespace ScrumpingLMS.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class ScheduleDayViewModel
+    {
+        public int DayNumber { get; set; }
+
+        public DateTime WorkingDate { get; set; }
+
+        //Foreign Key KlassId
+        public int KlassId { get; set; }
+
+        public string Details { get; set; }
     }
 }

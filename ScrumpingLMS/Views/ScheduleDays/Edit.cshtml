@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Ändra Schema</h2>
+<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
@@ -12,40 +12,36 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        <h4>ScheduleDay</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            <!--@Html.LabelFor(model => model.KlassId, "KlassId", htmlAttributes: new { @class = "control-label col-md-2" })-->
-            <div class="control-label col-md-2"><b>Klass</b></div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.DayNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DisplayFor(model => model.Klass.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.KlassId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <!--@Html.LabelFor(model => model.DayNumber, htmlAttributes: new { @class = "control-label col-md-2" })-->
-            <div class="control-label col-md-2"><b>Dag</b></div>
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.DayNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DayNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DayNumber, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.KlassId, "KlassId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("KlassId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.KlassId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
         <div class="form-group">
-            <!--@Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })-->
-            <div class="control-label col-md-2"><b>Detaljer</b></div>
+            @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.Details, 10, 400, new { htmlAttributes = new { @class = "form-control" } })
                
                 <p id="schemahelper">
                     Använd följande html-taggar:<br />
-                    &lt;br&gt; för att göra radbrytning<br />
                     &lt;b&gt; <b>Fet text</b> &lt;/b&gt;<br />
-                    &lt;i&gt; <i>Kursiv text</i> &lt;/i&gt;<br />
+                    &lt;&gt; <i>Kursiv text</i> &lt;/i&gt;<br />
                     &lt;u&gt; <u>Understruken text</u> &lt;/u&gt;<br />
                     &lt;a href="http://www.lexicon.se"&gt;<a href="http://www.lexicon.se">Länk till Lexicon</a>&lt;/a&gt;<br />
 
@@ -54,7 +50,12 @@
                 @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
             </div>
         </div>
-
+            @using (Html.BeginForm("Upload", "Dokuments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="file" name="file" />
+                <input type="submit" name="Submit" id="Submit" value="Upload" />
+            }
+       
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -64,7 +65,7 @@
 }
 
 <div>
-    @Html.ActionLink("Tillbaka till listan", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
