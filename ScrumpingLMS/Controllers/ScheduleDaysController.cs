@@ -37,7 +37,7 @@ namespace ScrumpingLMS.Controllers
                 var _user = db.Users.Where(u => u.Id == tempId).First();
 
                 Klass klass = db.Klasser.Find(_user.KlassId);
-                ViewBag.KlassNamn = klass.Name;
+                //ViewBag.KlassNamn = klass.Name;
 
                 var scheduleDays = db.ScheduleDays
                     .Where(k => k.KlassId == _user.KlassId);
