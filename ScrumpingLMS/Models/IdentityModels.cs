@@ -43,6 +43,8 @@ namespace ScrumpingLMS.Models
         public DbSet<ScheduleDay> ScheduleDays { get; set; }
         public DbSet<SharedFolder> SharedFolders { get; set; }
         public DbSet<SharedFolderApplicationUser> SharedFolderApplicationUsers { get; set; }
+        public DbSet<ScheduleDayUpload> ScheduleDayUploads { get; set; }
+        //public System.Data.Entity.DbSet<ScrumpingLMS.Models.ScheduleDayUpload> ScheduleDayUploads { get; set; }
 
 //        public System.Data.Entity.DbSet<ScrumpingLMS.Models.ApplicationUser> ApplicationUsers { get; set; }
 
