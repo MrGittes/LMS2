@@ -55,15 +55,15 @@ namespace ScrumpingLMS.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "UserName")]
+        [Display(Name = "Användarnamn")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Kom ihåg mig?")]
         public bool RememberMe { get; set; }
     }
 
@@ -75,7 +75,7 @@ namespace ScrumpingLMS.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "UserName")]
+        [Display(Name = "Användarnamn")]
         public string UserName { get; set; }
 
         [Required]
@@ -100,7 +100,7 @@ namespace ScrumpingLMS.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
@@ -119,7 +119,7 @@ namespace ScrumpingLMS.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
@@ -137,7 +137,7 @@ namespace ScrumpingLMS.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
-
+/*
     public class ScheduleDayViewModel
     {
         public int DayNumber { get; set; }
@@ -149,4 +149,5 @@ namespace ScrumpingLMS.Models
 
         public string Details { get; set; }
     }
+*/
 }

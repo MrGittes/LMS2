@@ -58,7 +58,16 @@ namespace ScrumpingLMS.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", klassApplicationUser.ApplicationUserId);
+//            var teachers = db.Users.Where(t => t.Roles);
+
+//            var roleID = db.Users.Where(u => u.Id == tempId).First().Roles.First().RoleId;
+
+ //           var adminID = db.Roles.Where(r => r.Name == "lärare").First().Id;
+
+
+            var teachers = db.Users;
+
+            ViewBag.ApplicationUserId = new SelectList(teachers, "Id", "FirstName", klassApplicationUser.ApplicationUserId);
             ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name", klassApplicationUser.KlassId);
             return View(klassApplicationUser);
         }

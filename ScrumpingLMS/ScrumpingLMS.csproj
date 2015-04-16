@@ -216,6 +216,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Klass.cs" />
     <Compile Include="Models\KlassApplicationUser.cs" />
+    <Compile Include="Models\KlassListViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ScheduleDay.cs" />
     <Compile Include="Models\SharedFolder.cs" />

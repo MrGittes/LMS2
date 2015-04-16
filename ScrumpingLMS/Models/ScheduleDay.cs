@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -11,8 +12,10 @@ namespace ScrumpingLMS.Models
     {
         public int Id { get; set; }
 
+        [DisplayName("Dagnummer")]
         public int DayNumber { get; set; }
 
+        [DisplayName("Datum")]
         public DateTime WorkingDate { get; set; }
 
         //Foreign Key KlassId
@@ -21,6 +24,7 @@ namespace ScrumpingLMS.Models
         [ForeignKey("KlassId")]
         public virtual Klass Klass { get; set; }
 
+        [DisplayName("Dagsschema")]
         [AllowHtmlAttribute]
         public string Details { get; set; }
     }

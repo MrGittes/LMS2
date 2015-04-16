@@ -19,7 +19,58 @@ namespace ScrumpingLMS.Controllers
         // GET: Klasses
         public ActionResult Index()
         {
-            return View(db.Klasser.ToList());
+            var AllKlasses = db.Klasser.ToList();
+
+            var Klasses = from k in db.Klasser
+                          join ku in db.KlassApplicationUsers on k.Id equals ku.KlassId
+                          where k.Id == ku.KlassId
+                          orderby k.Name descending
+                          select new KlassListViewModel{
+                                Id = k.Id,
+                                Name = k.Name,
+                                NumberOfDays = k.NumberOfDays,
+                                StartDate = k.StartDate,
+                                TeacherName = ku.ApplicationUser.FirstName
+                          };
+            return View(Klasses);
+
+//var Results = from g in DB.Galleries
+//              join m in DB.Media on g.GalleryID equals m.GalleryID
+//              where g.GalleryID == GalleryID
+//              orderby m.MediaDate descending, m.MediaID descending
+//              select new PictureGallery {
+//                                GalleryID = g.GalleryId,
+//                                GalleryTitle = g.GalleryTitle,
+//                                MediaID = m.MediaID,
+//                                MediaTitle = m.MediaTitle,
+//                                MediaDesc = m.MediaDesc,
+//                                Rating = m.Rating,
+//                                Views = m.Views} ;
+
+
+
+//            var result = db.Klasser
+//                .Join(db.KlassApplicationUsers)
+               
+//                .Select{
+                
+//                }
+//                      sc => sc.Id,
+//                      soc => soc.KlassId,
+//                      (sc, soc) => new
+//                      {
+//                          SomeClass = sc,
+//                          SomeOtherClass = soc
+//                      });
+
+
+            //    var model = db.Fordons.GroupBy(v => v.TypeOfVehicle)
+            //        .Select(g =>
+            //            new VehicleViewModel { CountOfVehicles = g.Count(),
+            //                                    TypeOfVehicle = g.Key
+            //            });
+ //           var AllKlasses = db.Klasser.ToList();
+ //           return View(AllKlasses);
         }
 
         // GET: Klasses
