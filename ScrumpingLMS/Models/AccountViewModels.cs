@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ScrumpingLMS.Models
@@ -135,5 +136,17 @@ namespace ScrumpingLMS.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class ScheduleDayViewModel
+    {
+        public int DayNumber { get; set; }
+
+        public DateTime WorkingDate { get; set; }
+
+        //Foreign Key KlassId
+        public int KlassId { get; set; }
+
+        public string Details { get; set; }
     }
 }

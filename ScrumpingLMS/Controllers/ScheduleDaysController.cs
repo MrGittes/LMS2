@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using ScrumpingLMS.Models;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
-using System.IO;
 
 namespace ScrumpingLMS.Controllers
 {
@@ -43,40 +42,14 @@ namespace ScrumpingLMS.Controllers
                 var scheduleDays = db.ScheduleDays
                     .Where(k => k.KlassId == _user.KlassId);
 
+                //    var model = db.Fordons.GroupBy(v => v.TypeOfVehicle)
+                //        .Select(g =>
+                //            new VehicleViewModel { CountOfVehicles = g.Count(),
+                //                                    TypeOfVehicle = g.Key
+                //            });
+
                 return View(scheduleDays.ToList());
             }
-        }
-        public ActionResult Upload([Bind(Include = "Id,DayNumber,KlassId,Details,WorkingDate,LinkToDokument")] ScheduleDay scheduleDay, HttpPostedFileBase UploadTheFile)
-        {
-
-            if (UploadTheFile != null && UploadTheFile.ContentLength > 0)
-            {
-                // extract only the fielname
-                var fileName = Path.GetFileName(UploadTheFile.FileName);
-                // store the file inside ~/Content/LearnObject-Repository folder
-                UploadTheFile.SaveAs(Path.Combine(Server.MapPath("~/Documents/"), fileName));
-                //UploadTheFile.SaveAs("~/Documents/" + fileName);
-                //var path = Path.Combine(Server.MapPath("~/Content/LearnObject-Repository"), fileName);
-                //UploadTheFile.SaveAs(path);
-                scheduleDay.LinkToDokument = "~/Documents/" + fileName;
-
-            }
-            if (ModelState.IsValid)
-            {
-
-                //if (scheduleDay.Details.Contains("script"))
-                //{
-                //    scheduleDay.Details = scheduleDay.Details.Replace("script", "scripting is not allowed");
-                //}
-
-                db.ScheduleDays.Add(scheduleDay);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name", scheduleDay.KlassId);
-            return View(scheduleDay);
-            
         }
 
         // GET: ScheduleDays/Details/5
@@ -94,9 +67,6 @@ namespace ScrumpingLMS.Controllers
             return View(scheduleDay);
         }
 
-      
- 
-
         // GET: ScheduleDays/Create
         public ActionResult Create()
         {
@@ -108,25 +78,9 @@ namespace ScrumpingLMS.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-       [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,DayNumber,KlassId,Details,WorkingDate,LinkToDokument")] ScheduleDay scheduleDay, HttpPostedFileBase UploadTheFile)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,DayNumber,KlassId,Details")] ScheduleDay scheduleDay)
         {
-            if (UploadTheFile != null && UploadTheFile.ContentLength > 0)
-            {
-                // extract only the fielname
-                var fileName = Path.GetFileName(UploadTheFile.FileName);
-                // store the file inside ~/Content/LearnObject-Repository folder
-                UploadTheFile.SaveAs(Path.Combine(Server.MapPath("~/Documents/"), fileName));
-                //UploadTheFile.SaveAs("~/Documents/" + fileName);
-                //var path = Path.Combine(Server.MapPath("~/Content/LearnObject-Repository"), fileName);
-                //UploadTheFile.SaveAs(path);
-                scheduleDay.LinkToDokument = "~/Documents/" + fileName;
-
-            }
-            scheduleDay.Details = "---";
-            
-
-
             if (ModelState.IsValid)
             {
 
@@ -165,20 +119,8 @@ namespace ScrumpingLMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,DayNumber,KlassId,Details,WorkingDate,LinkToDokument")] ScheduleDay scheduleDay, HttpPostedFileBase UploadTheFile)
+        public ActionResult Edit([Bind(Include = "Id,DayNumber,KlassId,Details")] ScheduleDay scheduleDay)
         {
-            if (UploadTheFile != null && UploadTheFile.ContentLength > 0)
-            {
-                // extract only the fielname
-                var fileName = Path.GetFileName(UploadTheFile.FileName);
-                // store the file inside ~/Content/LearnObject-Repository folder
-                UploadTheFile.SaveAs(Path.Combine(Server.MapPath("~/Documents/"), fileName));
-                //UploadTheFile.SaveAs("~/Documents/" + fileName);
-                //var path = Path.Combine(Server.MapPath("~/Content/LearnObject-Repository"), fileName);
-                //UploadTheFile.SaveAs(path);
-                scheduleDay.LinkToDokument = "~/Documents/" + fileName;
-
-            }
             if (ModelState.IsValid)
             {
 

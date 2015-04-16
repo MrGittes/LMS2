@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<ScrumpingLMS.Models.ScheduleDay>
 
 <div id="KlassList">
-
     @foreach (var item in Model)
     {
-        <div class = "row">
+        <div class="row">
             <div class="col-md-1">
                 @Html.DisplayFor(modelItem => item.DayNumber)
             </div>
             <div class="col-md-3">
-                @Html.DisplayFor(modelItem => item.WorkingDate)
+                @*@Html.DisplayFor(modelItem => item.WorkingDate)*@
+                @Html.Label(item.WorkingDate.ToShortDateString())
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6">
                 @{var text = item.Details;}
                 @Html.Raw(@text) &nbsp;
             </div>

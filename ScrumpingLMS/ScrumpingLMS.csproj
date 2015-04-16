@@ -164,7 +164,6 @@
     <Compile Include="Controllers\KlassesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ScheduleDaysController.cs" />
-    <Compile Include="Controllers\ScheduleDayUploadsController.cs" />
     <Compile Include="Controllers\SharedFoldersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,22 +216,6 @@
     <Compile Include="Migrations\201504150458390_reomveEnddate.Designer.cs">
       <DependentUpon>201504150458390_reomveEnddate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504150715247_DokLink.cs" />
-    <Compile Include="Migrations\201504150715247_DokLink.Designer.cs">
-      <DependentUpon>201504150715247_DokLink.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504150908132_NyLink.cs" />
-    <Compile Include="Migrations\201504150908132_NyLink.Designer.cs">
-      <DependentUpon>201504150908132_NyLink.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504151127296_SheduleUp.cs" />
-    <Compile Include="Migrations\201504151127296_SheduleUp.Designer.cs">
-      <DependentUpon>201504151127296_SheduleUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504151149056_SchedulUpload.cs" />
-    <Compile Include="Migrations\201504151149056_SchedulUpload.Designer.cs">
-      <DependentUpon>201504151149056_SchedulUpload.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dokument.cs" />
@@ -244,7 +227,6 @@
     <Compile Include="Models\ScheduleDay.cs" />
     <Compile Include="Models\SharedFolder.cs" />
     <Compile Include="Models\SharedFolderApplicationUser.cs" />
-    <Compile Include="Models\SheduleDayUpload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -381,18 +363,11 @@
     <Content Include="Views\SharedFolders\Edit.cshtml" />
     <Content Include="Views\SharedFolders\Index.cshtml" />
     <Content Include="Views\ScheduleDays\_ScheduleList.cshtml" />
-    <Content Include="Views\ScheduleDays\Upload.cshtml" />
-    <Content Include="Views\ScheduleDayUploads\Create.cshtml" />
-    <Content Include="Views\ScheduleDayUploads\Delete.cshtml" />
-    <Content Include="Views\ScheduleDayUploads\Details.cshtml" />
-    <Content Include="Views\ScheduleDayUploads\Edit.cshtml" />
-    <Content Include="Views\ScheduleDayUploads\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Documents\" />
     <Folder Include="ShraedLibrary\" />
-    <Folder Include="Views\SheduleDaysUpoad\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -434,18 +409,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504150458390_reomveEnddate.resx">
       <DependentUpon>201504150458390_reomveEnddate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504150715247_DokLink.resx">
-      <DependentUpon>201504150715247_DokLink.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504150908132_NyLink.resx">
-      <DependentUpon>201504150908132_NyLink.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504151127296_SheduleUp.resx">
-      <DependentUpon>201504151127296_SheduleUp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504151149056_SchedulUpload.resx">
-      <DependentUpon>201504151149056_SchedulUpload.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
