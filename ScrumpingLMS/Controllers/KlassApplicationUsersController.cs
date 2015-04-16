@@ -66,7 +66,7 @@ namespace ScrumpingLMS.Controllers
  //           var adminID = db.Roles.Where(r => r.Name == "lärare").First().Id;
 
  //           var list = db.Users.ToList().Where(x => UserManager.IsInRole(x.Id, "Lärare")).ToList();
-            var list = db.Users.ToList().Where(x => x.Roles.Contains("Lärare")).ToList();
+            //var list = db.Users.ToList().Where(x => x.Roles.Contains("lärare")).ToList();
             var teachers = db.Users;
 
             ViewBag.ApplicationUserId = new SelectList(teachers, "Id", "FirstName", klassApplicationUser.ApplicationUserId);
