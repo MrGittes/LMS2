@@ -44,6 +44,7 @@
                         <li>@Html.ActionLink("Dokument", "Index", "Dokuments")</li>
                         <li>@Html.ActionLink("Klass", "IndexKlass", "Klasses")</li>
                         <li>@Html.ActionLink("Inlämningsuppgifter", "Index", "SharedFolders")</li>
+                        
                     }
 
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -51,6 +52,7 @@
 
                     @if (User.IsInRole("admin"))
                     {
+                        <li>@Html.ActionLink("Schemauppladdningar", "Index", "ScheduleDayUploads")</li>
                         <li>@Html.ActionLink("Klasser", "Index", "Klasses")</li>
                         <li>@Html.ActionLink("Add new user", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                     }

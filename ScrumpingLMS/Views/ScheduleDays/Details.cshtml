@@ -35,8 +35,28 @@
         </dd>
 
     </dl>
+    @using (Html.BeginForm("Upload", "ScheduleDays", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <div>
+                <input type="file" name="UploadTheFile" value="UploadTheFile" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+
+
+
+    }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.IsInRole("admin")) {
+       @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
+    }
+    @Html.ActionLink("Tillbaka till schemaöversikt", "Index")
 </p>

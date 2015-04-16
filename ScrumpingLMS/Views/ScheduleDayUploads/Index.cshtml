@@ -1,24 +1,24 @@
-﻿@model IEnumerable<ScrumpingLMS.Models.Klass>
+﻿@model IEnumerable<ScrumpingLMS.Models.ScheduleDayUpload>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Lista på samtliga klasser</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Lägg till en ny klass", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Klass.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayNameFor(model => model.DayNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumberOfDays)
+            @Html.DisplayNameFor(model => model.LinkToDokument)
         </th>
         <th></th>
     </tr>
@@ -26,13 +26,14 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Klass.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StartDate.ToString("yyyy-MM-dd"))
+            @Html.DisplayFor(modelItem => item.DayNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumberOfDays)
+            <a href="@Model.LinkToDokument">Tryck</a>        
+            @Html.DisplayFor(modelItem => item.LinkToDokument)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
