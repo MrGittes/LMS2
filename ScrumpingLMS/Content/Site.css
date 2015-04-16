@@ -23,8 +23,8 @@ textarea {
     max-width: 280px;
 }
 tr:nth-child(even) {
-background-color: #0000ff; 
-color: #ccc;
+background-color: #ccc; 
+color: #808080;
 }
 
 .rader:nth-child(even){
