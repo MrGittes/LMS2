@@ -28,6 +28,6 @@ color: #ccc;
 }
 
 .rader:nth-child(even){
-background-color: #0000ff; 
-color: #ccc;
+background-color: #ccc; 
+color: #808080;
 }
