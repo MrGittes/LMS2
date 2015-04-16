@@ -79,7 +79,7 @@ namespace ScrumpingLMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,DayNumber,KlassId,Details")] ScheduleDay scheduleDay)
+        public ActionResult Create([Bind(Include = "Id,DayNumber,KlassId,WorkingDate,Details")] ScheduleDay scheduleDay)
         {
             if (ModelState.IsValid)
             {
@@ -119,7 +119,7 @@ namespace ScrumpingLMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,DayNumber,KlassId,Details")] ScheduleDay scheduleDay)
+        public ActionResult Edit([Bind(Include = "Id,DayNumber,KlassId,WorkingDate,Details")] ScheduleDay scheduleDay)
         {
             if (ModelState.IsValid)
             {

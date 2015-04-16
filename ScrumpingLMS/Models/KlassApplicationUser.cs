@@ -22,6 +22,15 @@ namespace ScrumpingLMS.Models
         [ForeignKey("KlassId")]
         public virtual Klass Klass { get; set; }
 
+        public KlassApplicationUser()
+        {
+        }
+
+        public KlassApplicationUser(int _KlassId, string _ApplicationUserId)
+        {
+            KlassId = _KlassId;
+            ApplicationUserId = _ApplicationUserId;
+        }
 
     }
 }

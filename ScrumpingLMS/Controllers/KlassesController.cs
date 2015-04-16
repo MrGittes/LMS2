@@ -122,6 +122,8 @@ namespace ScrumpingLMS.Controllers
         // GET: Klasses/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

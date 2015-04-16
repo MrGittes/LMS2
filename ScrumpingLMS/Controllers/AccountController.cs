@@ -164,13 +164,10 @@ namespace ScrumpingLMS.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             ViewBag.KlassId = new SelectList(db.Klasser, "Id", "Name");
-//            ViewBag.LMSRoleId = new SelectList(Roles.GetAllRoles(), "Id", "Role");
 
             if (ModelState.IsValid)
             {
                 model.CurrentDay = 0;
-//                Roles.AddUserToRole(model.UserName, model.RoleId);
-
 
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, CurrentDay = model.CurrentDay, KlassId = model.KlassId};
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -179,6 +176,12 @@ namespace ScrumpingLMS.Controllers
  //                   await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     UserManager.AddToRole(user.Id, model.RoleId);
+
+                    //Lärare
+                    //Lägg till användaren till Listan över lärare till olika kurser. 
+                    KlassApplicationUser klassApplicationUser = new KlassApplicationUser(model.KlassId, user.Id);
+                    db.KlassApplicationUsers.Add(klassApplicationUser);
+                    db.SaveChanges();
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

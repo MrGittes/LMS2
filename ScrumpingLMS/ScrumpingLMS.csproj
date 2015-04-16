@@ -161,9 +161,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DokumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KlassApplicationUsersController.cs" />
     <Compile Include="Controllers\KlassesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ScheduleDaysController.cs" />
+    <Compile Include="Controllers\SharedFoldersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -349,6 +351,11 @@
     <Content Include="Views\Klasses\IndexKlass.cshtml" />
     <Content Include="Views\Account\Reciept.cshtml" />
     <Content Include="Views\ScheduleDays\_ScheduleList.cshtml" />
+    <Content Include="Views\KlassApplicationUsers\Create.cshtml" />
+    <Content Include="Views\KlassApplicationUsers\Delete.cshtml" />
+    <Content Include="Views\KlassApplicationUsers\Details.cshtml" />
+    <Content Include="Views\KlassApplicationUsers\Edit.cshtml" />
+    <Content Include="Views\KlassApplicationUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
