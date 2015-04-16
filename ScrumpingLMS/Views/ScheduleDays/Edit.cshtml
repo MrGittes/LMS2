@@ -9,6 +9,8 @@
 
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model => model.WorkingDate)
+    @Html.HiddenFor(model => model.KlassId)
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
