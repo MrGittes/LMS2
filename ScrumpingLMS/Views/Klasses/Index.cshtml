@@ -29,7 +29,8 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
+            @*@Html.DisplayFor(modelItem => item.StartDate)*@
+            @Html.Label(item.StartDate.ToShortDateString())
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumberOfDays)
