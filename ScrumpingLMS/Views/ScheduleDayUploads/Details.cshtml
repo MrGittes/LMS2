@@ -1,0 +1,59 @@
+﻿@model ScrumpingLMS.Models.ScheduleDayUpload
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@using (Html.BeginForm("ShowFile", "ScheduleDayUploads", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div>
+    <h4>ScheduleDayUpload</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Klass.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Klass.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayNumber)
+        </dd>
+
+        <dt>
+            
+                @Html.DisplayNameFor(model => model.LinkToDokument)
+
+</dt>
+
+        <dd>
+            <a href=@Model.LinkToDokument>garage</a>
+            @*@Html.DisplayFor(model => model.LinkToDokument)*@
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="ShowFile" class="btn btn-default" />
+        </div>
+    </div>*@
+    <a href="~/Documents/690f087.ppt" >Fil</a>
+
+    @Html.ActionLink("Show the file", "ShowFile", new { sLinkToDokument = Model.LinkToDokument }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+
+
+</p>
+}

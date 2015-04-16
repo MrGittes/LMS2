@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using ScrumpingLMS.Models;
 using System.IO;
+using Microsoft.AspNet.Identity;
+
 
 namespace ScrumpingLMS.Controllers
 {
@@ -62,9 +64,30 @@ namespace ScrumpingLMS.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,DokumentObjekt")] Dokument dokument)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,DokumentObjekt,DokumentLink")] Dokument dokument, HttpPostedFileBase UploadTheFile)
         {
+
+            if (UploadTheFile != null && UploadTheFile.ContentLength > 0)
+            {
+                // extract only the fielname
+                var fileName = Path.GetFileName(UploadTheFile.FileName);
+                // store the file inside ~/Content/LearnObject-Repository folder
+                UploadTheFile.SaveAs(Path.Combine(Server.MapPath("~/Documents/"), fileName));
+                //UploadTheFile.SaveAs("~/Documents/" + fileName);
+                //var path = Path.Combine(Server.MapPath("~/Content/LearnObject-Repository"), fileName);
+                //UploadTheFile.SaveAs(path);
+                dokument.DokumentLink = "../../Documents/" + fileName;
+
+            }
+            var TempId = User.Identity.GetUserId();
+
+            var _user = db.Users.Where(u => u.Id == TempId).First();
+
+            dokument.ApplicationUserId = _user.Id;
+
+
+
             if (ModelState.IsValid)
             {
                 db.Dokuments.Add(dokument);
@@ -97,7 +120,7 @@ namespace ScrumpingLMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,DokumentObjekt")] Dokument dokument)
+        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,DokumentObjekt,DokumentLink")] Dokument dokument)
         {
             if (ModelState.IsValid)
             {

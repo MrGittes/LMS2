@@ -17,5 +17,7 @@ namespace ScrumpingLMS.Models
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public byte[] DokumentObjekt { get; set; }
+
+        public string DokumentLink { get; set; }
     }
 }

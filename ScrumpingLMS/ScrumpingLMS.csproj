@@ -165,6 +165,7 @@
     <Compile Include="Controllers\KlassesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ScheduleDaysController.cs" />
+    <Compile Include="Controllers\ScheduleDayUploadsController.cs" />
     <Compile Include="Controllers\SharedFoldersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
