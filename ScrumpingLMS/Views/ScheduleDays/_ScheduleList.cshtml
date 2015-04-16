@@ -9,7 +9,8 @@
             </div>
             <div class="col-md-3">
                 @*@Html.DisplayFor(modelItem => item.WorkingDate)*@
-                @Html.Label(item.WorkingDate.ToShortDateString())
+                @*@Html.Label(item.WorkingDate.ToShortDateString())*@
+                @item.WorkingDate.ToShortDateString()
             </div>
             <div class="col-md-6">
                 @{var text = item.Details;}
