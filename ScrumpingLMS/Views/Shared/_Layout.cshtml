@@ -32,7 +32,7 @@
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (User.IsInRole("admin"))
+                    @if (User.IsInRole("lärare"))
                     {
                         <li>@Html.ActionLink("Schema", "Index", "ScheduleDays")</li>
                         <li>@Html.ActionLink("Dokument", "Index", "Dokuments")</li>
@@ -50,7 +50,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                    @if (User.IsInRole("admin"))
+                    @if (User.IsInRole("lärare"))
                     {
                         <li>@Html.ActionLink("Schemauppladdningar", "Index", "ScheduleDayUploads")</li>
                         <li>@Html.ActionLink("Klasser", "Index", "Klasses")</li>

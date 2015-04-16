@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity;
 
 namespace ScrumpingLMS.Controllers
 {
+    [Authorize]
     public class DokumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

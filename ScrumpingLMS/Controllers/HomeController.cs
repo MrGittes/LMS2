@@ -20,7 +20,7 @@ namespace ScrumpingLMS.Controllers
         {
             var tempId = User.Identity.GetUserId();
             var roleID = db.Users.Where(u => u.Id == tempId).First().Roles.First().RoleId;
-            var adminID = db.Roles.Where(r => r.Name == "admin").First().Id;
+            var adminID = db.Roles.Where(r => r.Name == "lärare").First().Id;
 
             if (roleID == adminID)
             {
