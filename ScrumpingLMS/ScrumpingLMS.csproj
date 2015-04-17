@@ -205,9 +205,25 @@
     <Compile Include="Migrations\201504071325302_KlassId.Designer.cs">
       <DependentUpon>201504071325302_KlassId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504100802413_UserInSharedFolder.cs" />
+    <Compile Include="Migrations\201504100802413_UserInSharedFolder.Designer.cs">
+      <DependentUpon>201504100802413_UserInSharedFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504150450083_WorkingDate.cs" />
+    <Compile Include="Migrations\201504150450083_WorkingDate.Designer.cs">
+      <DependentUpon>201504150450083_WorkingDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504150458390_reomveEnddate.cs" />
+    <Compile Include="Migrations\201504150458390_reomveEnddate.Designer.cs">
+      <DependentUpon>201504150458390_reomveEnddate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201504151349066_updatering 15april.cs" />
     <Compile Include="Migrations\201504151349066_updatering 15april.Designer.cs">
       <DependentUpon>201504151349066_updatering 15april.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504161428024_update 150416.cs" />
+    <Compile Include="Migrations\201504161428024_update 150416.Designer.cs">
+      <DependentUpon>201504161428024_update 150416.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -220,10 +236,15 @@
     <Compile Include="Models\ScheduleDay.cs" />
     <Compile Include="Models\SharedFolder.cs" />
     <Compile Include="Models\SharedFolderApplicationUser.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\ScrumpingLMS.dll" />
+    <Content Include="bin\ScrumpingLMS.pdb" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -356,6 +377,11 @@
     <Content Include="Views\KlassApplicationUsers\Details.cshtml" />
     <Content Include="Views\KlassApplicationUsers\Edit.cshtml" />
     <Content Include="Views\KlassApplicationUsers\Index.cshtml" />
+    <Content Include="Views\SharedFolders\Create.cshtml" />
+    <Content Include="Views\SharedFolders\Delete.cshtml" />
+    <Content Include="Views\SharedFolders\Details.cshtml" />
+    <Content Include="Views\SharedFolders\Edit.cshtml" />
+    <Content Include="Views\SharedFolders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,8 +420,20 @@
     <EmbeddedResource Include="Migrations\201504071325302_KlassId.resx">
       <DependentUpon>201504071325302_KlassId.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504100802413_UserInSharedFolder.resx">
+      <DependentUpon>201504100802413_UserInSharedFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504150450083_WorkingDate.resx">
+      <DependentUpon>201504150450083_WorkingDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504150458390_reomveEnddate.resx">
+      <DependentUpon>201504150458390_reomveEnddate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504151349066_updatering 15april.resx">
       <DependentUpon>201504151349066_updatering 15april.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504161428024_update 150416.resx">
+      <DependentUpon>201504161428024_update 150416.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
